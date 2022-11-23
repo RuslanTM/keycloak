@@ -478,6 +478,12 @@ public class OAuthClient {
         List<NameValuePair> parameters = new LinkedList<>();
         parameters.add(new BasicNameValuePair(OAuth2Constants.GRANT_TYPE, OAuth2Constants.AUTHORIZATION_CODE));
 
+        if (requestHeaders != null) {
+            for (Map.Entry<String, String> header : requestHeaders.entrySet()) {
+                post.addHeader(header.getKey(), header.getValue());
+            }
+        }
+
         if (origin != null) {
             post.addHeader("Origin", origin);
         }
@@ -984,6 +990,11 @@ public class OAuthClient {
         List<NameValuePair> parameters = new LinkedList<>();
         parameters.add(new BasicNameValuePair(OAuth2Constants.GRANT_TYPE, OAuth2Constants.REFRESH_TOKEN));
 
+        if (requestHeaders != null) {
+            for (Map.Entry<String, String> header : requestHeaders.entrySet()) {
+                post.addHeader(header.getKey(), header.getValue());
+            }
+        }
         if (origin != null) {
             post.addHeader("Origin", origin);
         }
